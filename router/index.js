@@ -4,6 +4,7 @@ const router = express.Router();
 
 
 router.use('/accounts', require('../api/accounts'));
+router.use('/accounts/:id', require('../api/accounts'));
 
 router.get('/', (req, res) => {
   res.send('<h1>Welcome to DryServ API</h1>')  

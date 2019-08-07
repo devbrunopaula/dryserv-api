@@ -37,20 +37,11 @@ app.get("/test", (req, res) => {
 });
 
 
-app.get('/accounts/:id', (req, res) => {
-    const id = req.params.id
-    
-   let sql = `SELECT * FROM accounts where accountID = ('${id}')`;
-   db.query(sql, (err, result) => {
-       if (err) throw err
-       res.send(result)
-       console.log(id)
-   })
-})
+
 
 
 // Listening PORT
 
-const port = process.env.PORT || 56205;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => console.log(`Server Running on port ${port}`));
