@@ -20,5 +20,10 @@ const db = mysql.createConnection({
     database: process.env.database
     //`mysql://b29eb30123d588:142e8cec@us-cdbr-iron-east-02.cleardb.net/heroku_68b6cba97538592?reconnect=true`
 });
+setInterval(() => {
+    db.query('SELECT * FROM accounts', (err, rows) => {
+        if (err) throw err;
+    });
+}, 1000);
 
 module.exports = db;

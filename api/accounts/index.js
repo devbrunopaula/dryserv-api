@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
         if (err) throw error
         res.send(result)
     })
+    
 });
 
 // Routes [ GET ]  URL  ./accounts/:ID
