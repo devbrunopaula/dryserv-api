@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 
 // Middleware
 app.use(logger);
+app.use(require('./router'));
 
 // Setting up the .env config
 dotenv.config({
@@ -29,19 +30,12 @@ db.connect((err) =>{
 
 
 //Routes
-app.get("/", (req, res) => {
-    res.send("Hello Wold 11:50");
-});
+
 
 app.get("/test", (req, res) => {
   
 });
-app.get("/accounts", (req, res) => {
-      db.query('SELECT * FROM accounts', (err, result) => {
-          if (err) throw error
-          res.send(result)
-      })
-});
+
 
 app.get('/accounts/:id', (req, res) => {
     const id = req.params.id
