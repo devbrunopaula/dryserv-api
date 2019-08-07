@@ -30,7 +30,7 @@ db.connect((err) =>{
 
 //Routes
 app.get("/", (req, res) => {
-    res.send("Hello Wold");
+    res.send("Hello Wold 11:50");
 });
 app.get("/accounts", (req, res) => {
     let sql = "SELECT * FROM `heroku_68b6cba97538592`.accounts order by accountID asc;";
