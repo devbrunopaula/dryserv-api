@@ -4,6 +4,8 @@ const mysql = require("mysql");
 const logger = require('./middleware/Logger')
 const db = require("./src/db");
 const dotenv = require("dotenv");
+
+
 // Middleware
 app.use(logger);
 
@@ -14,8 +16,6 @@ dotenv.config({
 
 
 //DB Connect
-
-
 
 db.connect((err) =>{
     if(err){
@@ -32,23 +32,25 @@ db.connect((err) =>{
 app.get("/", (req, res) => {
     res.send("Hello Wold 11:50");
 });
-app.get("/accounts", (req, res) => {
-    let sql = "SELECT * FROM `heroku_68b6cba97538592`.accounts order by accountID asc;";
-    db.query( sql, (err, result) => {
-if(err) throw err;
-console.log(result )
 
-res.json(result)
-    })
+app.get("/test", (req, res) => {
+  
+});
+app.get("/accounts", (req, res) => {
+      db.query('SELECT * FROM accounts', (err, result) => {
+          if (err) throw error
+          res.send(result)
+      })
 });
 
 app.get('/accounts/:id', (req, res) => {
-    const id = req.params
+    const id = req.params.id
     
-   let sql = "SELECT * FROM `heroku_68b6cba97538592`.accounts WHERE accountID IN ('1')";
+   let sql = `SELECT * FROM accounts where accountID = ('${id}')`;
    db.query(sql, (err, result) => {
        if (err) throw err
        res.send(result)
+       console.log(id)
    })
 })
 
