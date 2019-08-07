@@ -1,13 +1,22 @@
 const express = require("express");
 const app = express();
-
+const mysql = require("mysql");
 const logger = require('./middleware/Logger')
 const db = require("./src/db");
-
+const dotenv = require("dotenv");
 // Middleware
 app.use(logger);
 
+// Setting up the .env config
+dotenv.config({
+    path: './.env'
+})
+
+
 //DB Connect
+
+
+
 db.connect((err) =>{
     if(err){
        console.log(err)
@@ -15,8 +24,6 @@ db.connect((err) =>{
     console.log('SQL Connected')
     
 });
-
-// Setting up the .env config
 
 
 
