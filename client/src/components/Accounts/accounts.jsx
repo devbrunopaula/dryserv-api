@@ -12,10 +12,11 @@ class Accounts extends Component {
     }
 
     getAccounts = () =>{
-        fetch(`/accounts`, {
+        fetch(`https://dryserv-api.herokuapp.com/accounts`, {
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Access-Control-Request-Method': 'GET'
             }
 
         })
