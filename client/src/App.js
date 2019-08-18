@@ -1,36 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Accounts from './components/Accounts/accounts'
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import NavBar from "./components/Nav";
+import Accounts from "./components/Accounts/accounts";
+import Account from "./components/Account/Account";
+
+import "./App.css";
 
 function App() {
   return (
-    <>
-    
     <Router>
-    
-      <div>
-        <ul>
-            {/* <li>
-            <Link to = "/" > Home </Link> 
-            </li>  */}
-            <li>
-            <Link to = "/accounts" > Accounts </Link> 
-            </li> 
-            
-             
-        </ul>
-
-        <hr/>
-            < Route exact path = "/accounts"
-            component = {
-              Accounts
-            }
-            />
-    </div> 
+      <NavBar />
+      <Switch>
+        <Route path="/accounts" exact component={Accounts} />
+        <Route path="/accounts/:id" component={Account} />
+      </Switch>
     </Router>
-    </>
-   
   );
 }
 
