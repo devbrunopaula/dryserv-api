@@ -16,13 +16,10 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   if (!id) res.status(404).send("Not ID Found");
-  const query = `SELECT accounts.name, accounts.phone1, accounts.accountID
-  FROM orders
-  right JOIN accounts
-  on orders.orderID = accounts.accountID
-  where accounts.accountID = ${id}
-  
-  `;
+  const query = `SELECT orders.orderID, accounts.firstName, accounts.lastName, orders.orderNumber, accounts.accountID, orders.accountID as Number
+  FROM  orders
+  JOIN accounts on orders.accountID = accounts.accountID
+  where accounts.accountID = ${id}`;
 
   let sql = `SELECT * FROM orders where ordersID = ('${id}')`;
   db.query(query, (err, result) => {
